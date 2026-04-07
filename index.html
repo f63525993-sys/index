@@ -99,7 +99,7 @@ body{font-family:'Segoe UI',Tahoma,'Noto Sans Arabic',sans-serif;background:var(
 .apl{font-size:var(--xs);color:var(--t2);background:rgba(255,255,255,.03);border-radius:7px;padding:4px 9px;border:1px solid var(--br);}
 
 /* BOTTOM NAV */
-#BNV{position:fixed;bottom:0;left:0;right:0;z-index:50;padding:8px 12px;background:var(--sf);border-top:1px solid var(--br);display:flex;gap:6px;align-items:center;box-shadow:0 -4px 18px rgba(0,0,0,.35);}
+#BNV{position:fixed;bottom:130px;left:50%;transform:translateX(-50%);border-radius:12px;width:90%;max-width:500px;z-index:50;padding:8px 12px;background:var(--sf);border-top:1px solid var(--br);display:flex;gap:6px;align-items:center;box-shadow:0 -4px 18px rgba(0,0,0,.35);}
 @supports(padding-bottom:env(safe-area-inset-bottom)){#BNV{padding-bottom:calc(8px + env(safe-area-inset-bottom));}}
 #BPV{background:rgba(255,255,255,.07);border:1px solid var(--br);border-radius:22px;padding:10px 14px;color:var(--tx);font-family:inherit;font-size:var(--xs);font-weight:700;cursor:pointer;flex-shrink:0;}
 #BPV:hover{background:rgba(255,255,255,.13);}
@@ -121,10 +121,10 @@ body{font-family:'Segoe UI',Tahoma,'Noto Sans Arabic',sans-serif;background:var(
 </style>
 </head>
 <body>
-<div id="TRANS" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;padding:8px;text-align:center;">
+<div id="TRANS" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);border-radius:12px;width:90%;max-width:400px;z-index:9999;background:#25D366;padding:8px;text-align:center;">
   <a href="https://wa.me/966501683880" target="_blank" style="color:white;text-decoration:none;margin:0 10px;font-size:14px;">💬 واتساب</a>
   <a href="tel:+966501683880" style="color:white;text-decoration:none;margin:0 10px;font-size:14px;">📞 اتصال</a>
-  <span style="color:white;font-size:12px;">مترجم هندي/أردو متاح</span>
+  <span style="color:white;font-size:12px;">خدمة الترجمة متاحة | अनुवाद सेवा उपलब्ध | ترجمہ خدمت دستیاب</span>
 </div>
 <script>
 function showTrans(){
@@ -241,7 +241,7 @@ Dari UGD hingga Keluar · জরুরি থেকে বাহির
     <button class="cln" id="CLG" onclick="changeLang()">تغيير اللغة</button>
   </div>
 
-  <div id="BNV" role="navigation">
+  <div id="BNV" role="navigation" style="margin-bottom:200px;">
     <button id="BPV" onclick="prevStep()" style="display:none">→ السابق</button>
     <button id="BNX" onclick="nextStep()">التالي ←</button>
     <button id="SBTN" onclick="playStep()" aria-label="تشغيل صوت الخطوة">🔊</button>
@@ -827,6 +827,34 @@ document.addEventListener('keydown',e=>{
   if(e.key===' ') playStep();
 });
 
+</script>
+<div id="MWMBAR" style="display:block;position:fixed;bottom:130px;left:50%;transform:translateX(-50%);border-radius:12px;width:90%;max-width:500px;z-index:9998;background:#006994;padding:12px 16px;text-align:center;border-top:2px solid #00b4d8;">
+  <p id="MWMTXT" style="color:white;margin:0 0 8px 0;font-size:14px;"></p>
+  <a id="MWMBTN" href="https://play.google.com/store/apps/details?id=com.mowaamah" target="_blank" style="display:inline-block;background:#00b4d8;color:white;padding:10px 24px;border-radius:25px;text-decoration:none;font-size:15px;font-weight:bold;">🤟 مترجم لغة الإشارة | Sign Language | सांकेतिक भाषा</a>
+</div>
+<script>
+const MWMTEXTS={
+  ar:{txt:"🤟 هل تحتاج مترجم لغة الإشارة أو مساعد بصري؟",btn:"افتح تطبيق مواءمة"},
+  en:{txt:"🤟 Do you need a sign language interpreter or visual assistant?",btn:"Open Mawaamah App"},
+  hi:{txt:"🤟 क्या आपको सांकेतिक भाषा दुभाषिया चाहिए?",btn:"मुवामा ऐप खोलें"},
+  ur:{txt:"🤟 کیا آپ کو اشاروں کی زبان کا مترجم چاہیے؟",btn:"مواءمة ایپ کھولیں"},
+  fr:{txt:"🤟 Avez-vous besoin d'un interprète en langue des signes?",btn:"Ouvrir Mawaamah"},
+  bn:{txt:"🤟 আপনার কি সাংকেতিক ভাষার দোভাষী দরকার?",btn:"মাওয়ামা অ্যাপ খুলুন"},
+  id:{txt:"🤟 Apakah Anda membutuhkan juru bahasa isyarat?",btn:"Buka Aplikasi Mawaamah"},
+  ms:{txt:"🤟 Adakah anda memerlukan jurubahasa bahasa isyarat?",btn:"Buka Aplikasi Mawaamah"},
+  tr:{txt:"🤟 İşaret dili tercümanına ihtiyacınız var mı?",btn:"Mawaamah Uygulamasını Aç"},
+  fa:{txt:"🤟 آیا به مترجم زبان اشاره نیاز دارید؟",btn:"باز کردن اپ مواءمة"}
+};
+function showMawaamah(){
+  const cl=CL||'ar';
+  const t=MWMTEXTS[cl]||MWMTEXTS.ar;
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const url=isIOS?'https://apps.apple.com/sa/app/id1529080218':'https://play.google.com/store/apps/details?id=com.mowaamah';
+  document.getElementById('MWMTXT').textContent=t.txt;
+  document.getElementById('MWMBTN').textContent='🤟 '+t.btn;
+  document.getElementById('MWMBTN').href=url;
+  document.getElementById('MWMBAR').style.display='block';
+}
 </script>
 </body>
 </html>
