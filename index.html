@@ -717,7 +717,7 @@ function tts(){
   const ld=L[CL]||L.en;
   window.speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(s.t+'. '+s.tip);
-  u.lang=ld.tts; u.rate=0.9;
+  u.lang=ld.tts; u.rate=1;
   window.speechSynthesis.speak(u);
 }
 
