@@ -1003,8 +1003,13 @@ function showHSTEP(i){
     window.speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(txt);
     const lmap={ar:'ar-SA',en:'en-US',hi:'hi-IN',ur:'ur-PK',fr:'fr-FR',bn:'bn-BD',id:'id-ID',ms:'ms-MY',tr:'tr-TR',fa:'fa-IR'};
-    u.lang=lmap[cl]||'ar-SA';u.rate=0.9;
-    window.speechSynthesis.speak(u);
+    u.lang=lmap[cl]||'ar-SA';
+u.rate=0.85;
+u.pitch=1;
+const voices=window.speechSynthesis.getVoices();
+const best=voices.find(v=>v.lang===u.lang&&v.localService)||voices.find(v=>v.lang.startsWith(u.lang.split('-')[0]));
+if(best) u.voice=best;
+window.speechSynthesis.speak(u);
   }
   if(navigator.vibrate) navigator.vibrate(100);
 }
