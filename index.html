@@ -873,7 +873,7 @@ document.addEventListener('keydown',e=>{
 <g class="hroom" id="hr_exit"><rect x="548" y="165" width="85" height="55" rx="8" fill="#1e8449" stroke="#2ecc71" stroke-width="1"/><text x="590" y="188" fill="white" text-anchor="middle" font-size="11" font-family="inherit">المخرج</text><text x="590" y="208" fill="#a9dfbf" text-anchor="middle" font-size="14" font-family="inherit">🚪</text></g>
 <g class="hroom" id="hr_owait"><rect x="20" y="275" width="100" height="50" rx="8" fill="#2c3e50" stroke="#7f8c8d" stroke-width="1"/><text x="70" y="295" fill="white" text-anchor="middle" font-size="10" font-family="inherit">انتظار</text><text x="70" y="312" fill="#ccc" text-anchor="middle" font-size="10" font-family="inherit">خارجي</text></g>
 <g class="hroom" id="hr_emg"><rect x="128" y="275" width="210" height="55" rx="8" fill="#9a5a0a" stroke="#e67e22" stroke-width="1.5"/><text x="233" y="306" fill="white" text-anchor="middle" font-size="13" font-family="inherit" font-weight="bold">بوابة الطوارئ 🚨</text></g>
-<g class="hroom" id="hr_pharm" style="cursor:pointer;" onclick="closeHMAP();setTimeout(()=>showNearbyScreen(),300)"><rect x="548" y="275" width="115" height="55" rx="8" fill="#1a5a3a" stroke="#27ae60" stroke-width="1.5"/><text x="605" y="295" fill="white" text-anchor="middle" font-size="10" font-family="inherit">💊 وصفتك جاهزة</text><text x="605" y="310" fill="#a9dfbf" text-anchor="middle" font-size="9" font-family="inherit">اضغط ← صيدلية</text></g>
+<g class="hroom" id="hr_pharm" style="cursor:pointer;" onclick="closeHMAP();setTimeout(()=>showPharmacyModal(),400)"><rect x="548" y="275" width="115" height="55" rx="8" fill="#1a5a3a" stroke="#27ae60" stroke-width="1.5"/><text x="605" y="295" fill="white" text-anchor="middle" font-size="10" font-family="inherit">💊 وصفتك جاهزة</text><text x="605" y="310" fill="#a9dfbf" text-anchor="middle" font-size="9" font-family="inherit">اضغط ← صيدلية</text></g>
 <circle id="hwalker" cx="233" cy="302" r="10" fill="#E8B84B" stroke="white" stroke-width="2"/>
 <text id="hwalkericon" x="233" y="307" text-anchor="middle" font-size="12" font-family="inherit">👣</text>
 </svg>
@@ -894,6 +894,56 @@ const HSTEPS=[
 {id:'hr_exit',cx:590,cy:192,lang:{ar:'اتَّجِه لِلْمَخْرَج - رِحْلَتُكَ اكْتَمَلَتْ',en:'Head to the exit - journey complete',hi:'निकास की ओर जाएं - यात्रा पूर्ण',ur:'خروج کی طرف جائیں - سفر مکمل',fr:'Dirigez vous vers la sortie',bn:'বাহির দিকে যান - যাত্রা সম্পূর্ণ',id:'Menuju pintu keluar',ms:'Menuju pintu keluar',tr:'Çıkışa gidin',fa:'به سمت خروج بروید'}},
 ];
 let HTIMER=null,HIDX=0;
+const HMAPLANG={
+  ar:{sec:'الأمن',wc:'🚻',tri:'ممرضة\nالفرز 👩‍⚕️',rec:'الاستقبال 🪑',wait:'الانتظار ⏳',vit:'قياس\nالعلامات 🩺',cl1:'عيادة 1\n🏥',cl2:'عيادة 2\n🏥',exit:'المخرج\n🚪',exp:'📋 تجربة\nالمريض\n💬 واتساب',pharm:'💊 وصفتك جاهزة\nاضغط ← صيدلية',emg:'بوابة الطوارئ 🚨',owait:'انتظار\nخارجي'},
+  en:{sec:'Security',wc:'🚻',tri:'Triage\nNurse 👩‍⚕️',rec:'Reception 🪑',wait:'Waiting ⏳',vit:'Vital\nSigns 🩺',cl1:'Clinic 1\n🏥',cl2:'Clinic 2\n🏥',exit:'Exit\n🚪',exp:'📋 Patient\nExperience\n💬 WhatsApp',pharm:'💊 Prescription\nTap ← Pharmacy',emg:'Emergency Gate 🚨',owait:'External\nWaiting'},
+  hi:{sec:'सुरक्षा',wc:'🚻',tri:'ट्राइएज\nनर्स 👩‍⚕️',rec:'रिसेप्शन 🪑',wait:'प्रतीक्षा ⏳',vit:'वाइटल\nसाइन्स 🩺',cl1:'क्लिनिक 1\n🏥',cl2:'क्लिनिक 2\n🏥',exit:'निकास\n🚪',exp:'📋 अनुभव\n💬 WhatsApp',pharm:'💊 नुस्खा\nफार्मेसी',emg:'आपातकालीन 🚨',owait:'बाहरी\nप्रतीक्षा'},
+  ur:{sec:'سیکیورٹی',wc:'🚻',tri:'ٹرائیج\nنرس 👩‍⚕️',rec:'ریسیپشن 🪑',wait:'انتظار ⏳',vit:'حیاتی\nعلامات 🩺',cl1:'کلینک 1\n🏥',cl2:'کلینک 2\n🏥',exit:'خروج\n🚪',exp:'📋 تجربہ\n💬 WhatsApp',pharm:'💊 نسخہ\nفارمیسی',emg:'ہنگامی دروازہ 🚨',owait:'بیرونی\nانتظار'},
+  fr:{sec:'Sécurité',wc:'🚻',tri:'Infirmière\nTriage 👩‍⚕️',rec:'Accueil 🪑',wait:'Attente ⏳',vit:'Signes\nVitaux 🩺',cl1:'Clinique 1\n🏥',cl2:'Clinique 2\n🏥',exit:'Sortie\n🚪',exp:'📋 Expérience\n💬 WhatsApp',pharm:'💊 Ordonnance\nPharmacie',emg:'Urgences 🚨',owait:'Attente\nExtérieure'},
+  bn:{sec:'নিরাপত্তা',wc:'🚻',tri:'ট্রাইয়েজ\nনার্স 👩‍⚕️',rec:'রিসেপশন 🪑',wait:'অপেক্ষা ⏳',vit:'ভাইটাল\nসাইনস 🩺',cl1:'ক্লিনিক 1\n🏥',cl2:'ক্লিনিক 2\n🏥',exit:'বাহির\n🚪',exp:'📋 অভিজ্ঞতা\n💬 WhatsApp',pharm:'💊 প্রেসক্রিপশন\nফার্মেসি',emg:'জরুরি দরজা 🚨',owait:'বাইরের\nঅপেক্ষা'},
+  id:{sec:'Keamanan',wc:'🚻',tri:'Perawat\nTriase 👩‍⚕️',rec:'Resepsi 🪑',wait:'Tunggu ⏳',vit:'Tanda\nVital 🩺',cl1:'Klinik 1\n🏥',cl2:'Klinik 2\n🏥',exit:'Keluar\n🚪',exp:'📋 Pengalaman\n💬 WhatsApp',pharm:'💊 Resep\nApotek',emg:'Pintu Darurat 🚨',owait:'Tunggu\nLuar'},
+  ms:{sec:'Keselamatan',wc:'🚻',tri:'Jururawat\nTriaj 👩‍⚕️',rec:'Kaunter 🪑',wait:'Tunggu ⏳',vit:'Tanda\nVital 🩺',cl1:'Klinik 1\n🏥',cl2:'Klinik 2\n🏥',exit:'Keluar\n🚪',exp:'📋 Pengalaman\n💬 WhatsApp',pharm:'💊 Preskripsi\nFarmasi',emg:'Pintu Kecemasan 🚨',owait:'Tunggu\nLuar'},
+  tr:{sec:'Güvenlik',wc:'🚻',tri:'Triaj\nHemşiresi 👩‍⚕️',rec:'Resepsiyon 🪑',wait:'Bekleme ⏳',vit:'Vital\nBulgular 🩺',cl1:'Klinik 1\n🏥',cl2:'Klinik 2\n🏥',exit:'Çıkış\n🚪',exp:'📋 Deneyim\n💬 WhatsApp',pharm:'💊 Reçete\nEczane',emg:'Acil Kapısı 🚨',owait:'Dış\nBekleme'},
+  fa:{sec:'امنیت',wc:'🚻',tri:'پرستار\nتریاژ 👩‍⚕️',rec:'پذیرش 🪑',wait:'انتظار ⏳',vit:'علائم\nحیاتی 🩺',cl1:'کلینیک 1\n🏥',cl2:'کلینیک 2\n🏥',exit:'خروج\n🚪',exp:'📋 تجربه\n💬 WhatsApp',pharm:'💊 نسخه\nداروخانه',emg:'درگاه اورژانس 🚨',owait:'انتظار\nبیرون'}
+};
+function updateHMAPLang(){
+  const cl=typeof CL!=='undefined'?CL:'ar';
+  const l=HMAPLANG[cl]||HMAPLANG.ar;
+  const map={hr_sec:'sec',hr_wc:'wc',hr_tri:'tri',hr_rec:'rec',hr_wait:'wait',hr_vit:'vit',hr_cl1:'cl1',hr_cl2:'cl2',hr_exit:'exit',hr_exp:'exp',hr_pharm:'pharm',hr_emg:'emg',hr_owait:'owait'};
+  Object.keys(map).forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const texts=el.querySelectorAll('text');
+    const lines=(l[map[id]]||'').split('\n');
+    texts.forEach((t,i)=>{if(lines[i]!==undefined) t.textContent=lines[i];});
+  });
+}
+function showPharmacyModal(){
+  const cl=typeof CL!=='undefined'?CL:'ar';
+  const titles={ar:'💊 أقرب صيدلية',en:'💊 Nearest Pharmacy',hi:'💊 निकटतम फार्मेसी',ur:'💊 قریبی فارمیسی',fr:'💊 Pharmacie proche',bn:'💊 নিকটতম ফার্মেসি',id:'💊 Apotek Terdekat',ms:'💊 Farmasi Terdekat',tr:'💊 En Yakın Eczane',fa:'💊 نزدیک‌ترین داروخانه'};
+  const title=titles[cl]||titles.ar;
+  let modal=document.getElementById('PHMODAL');
+  if(!modal){
+    modal=document.createElement('div');
+    modal.id='PHMODAL';
+    modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;display:flex;align-items:center;justify-content:center;';
+    modal.onclick=function(e){if(e.target===this)this.remove();};
+    document.body.appendChild(modal);
+  }
+  renderPharmacies();
+  const items=document.getElementById('PHLIST_ITEMS');
+  let html='<div style="background:#0d2233;border-radius:16px;padding:20px;width:92%;max-width:400px;max-height:85vh;overflow-y:auto;position:relative;">';
+  html+='<button onclick="document.getElementById(\'PHMODAL\').remove()" style="position:absolute;top:10px;left:10px;background:none;border:none;color:white;font-size:20px;cursor:pointer;">✖</button>';
+  html+='<h3 style="color:#E8B84B;text-align:center;margin:0 0 16px;font-family:inherit;">'+title+'</h3>';
+  html+='<div id="PHMODAL_ITEMS" style="display:flex;flex-direction:column;gap:8px;"></div>';
+  html+='</div>';
+  modal.innerHTML=html;
+  modal.style.display='flex';
+  document.body.style.overflow='hidden';
+  if(items){
+    document.getElementById('PHMODAL_ITEMS').innerHTML=items.innerHTML;
+  }
+}
 function showHospitalMap(){
   document.getElementById('HMAP').style.display='flex';
   document.body.style.overflow='hidden';
