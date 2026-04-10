@@ -159,8 +159,7 @@ Dari UGD hingga Keluar · জরুরি থেকে বাহির
     <button class="lb" onclick="selLang('bn')" aria-label="বাংলা"><img src="https://flagcdn.com/w40/bd.png" style="width:36px;height:24px;border-radius:3px;object-fit:cover;"><span class="ln">বাংলা</span></button>
   </nav>
   <div class="lacc">
-    <button class="lac" onclick="showHospitalMap()">🗺️ خريطة</button>
-<button class="lac" onclick="toggleHC()">🔆 تباين</button>
+    <button class="lac" onclick="toggleHC()">🔆 تباين</button>
     <button class="lac" onclick="setFS('lg')">أ+ كبير</button>
     <button class="lac" onclick="setFS('xl')">أ++ أكبر</button>
   </div>
@@ -244,7 +243,6 @@ Dari UGD hingga Keluar · জরুরি থেকে বাহির
 
   <div id="BNV" role="navigation" style="position:fixed;bottom:15px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:999;">
     <button id="BPV" onclick="prevStep()" style="display:none">→ السابق</button>
-<button onclick="showHospitalMap()" style="background:#1a6b8a;color:white;border:none;border-radius:22px;padding:8px 14px;font-size:13px;cursor:pointer;font-family:inherit;">🗺️</button>
     <button id="BNX" onclick="nextStep()">التالي ←</button>
     <button id="SBTN" onclick="playStep()" aria-label="تشغيل صوت الخطوة">🔊</button>
   </div>
@@ -851,167 +849,6 @@ document.addEventListener('keydown',e=>{
   document.getElementById('MWMBTN').textContent='🤟 '+t.btn;
   document.getElementById('MWMBTN').href=url;
   document.getElementById('MWMBAR').style.display='block';
-}
-</script>
-<div id="HMAP" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;align-items:center;justify-content:center;" onclick="if(event.target===this)closeHMAP()">
-<div style="background:#0d2233;border-radius:16px;padding:16px;width:95%;max-width:620px;max-height:92vh;overflow-y:auto;position:relative;">
-<button onclick="closeHMAP()" style="position:absolute;top:10px;left:10px;background:none;border:none;color:white;font-size:20px;cursor:pointer;">✖</button>
-<h3 style="color:#E8B84B;text-align:center;margin:0 0 10px;font-family:inherit;">🗺️ مسار المريض</h3>
-<svg id="HMAPSVG" viewBox="0 0 680 380" width="100%" style="display:block;background:#0d1f2d;border-radius:12px;">
-<defs><marker id="ha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#E8B84B" stroke-width="2"/></marker></defs>
-<rect x="80" y="165" width="510" height="55" rx="4" fill="#1a2d3d" stroke="#2a4a5a" stroke-width="1"/>
-<g class="hroom" id="hr_wc"><rect x="20" y="85" width="55" height="48" rx="8" fill="#1a6b8a" stroke="#5bc0de" stroke-width="1"/><text x="47" y="114" fill="white" text-anchor="middle" font-size="18" font-family="inherit">🚻</text></g>
-<g class="hroom" id="hr_sec"><rect x="20" y="165" width="70" height="55" rx="8" fill="#2c3e50" stroke="#7f8c8d" stroke-width="1"/><text x="55" y="190" fill="white" text-anchor="middle" font-size="11" font-family="inherit">الأمن</text><text x="55" y="208" fill="#aaa" text-anchor="middle" font-size="11" font-family="inherit">👮</text></g>
-<rect x="95" y="165" width="55" height="55" rx="4" fill="none" stroke="#3a5a6a" stroke-width="1" stroke-dasharray="4 3"/>
-<g class="hroom" id="hr_tri"><rect x="155" y="165" width="95" height="55" rx="8" fill="#7b241c" stroke="#e74c3c" stroke-width="1"/><text x="202" y="188" fill="white" text-anchor="middle" font-size="11" font-family="inherit">ممرضة</text><text x="202" y="207" fill="white" text-anchor="middle" font-size="11" font-family="inherit">الفرز 👩‍⚕️</text></g>
-<g class="hroom" id="hr_rec"><rect x="88" y="75" width="120" height="50" rx="8" fill="#9a7d0a" stroke="#E8B84B" stroke-width="1"/><text x="148" y="104" fill="white" text-anchor="middle" font-size="12" font-family="inherit">الاستقبال 🪑</text></g>
-<g class="hroom" id="hr_wait"><rect x="258" y="165" width="110" height="55" rx="8" fill="#2c3e50" stroke="#7f8c8d" stroke-width="1"/><text x="313" y="188" fill="white" text-anchor="middle" font-size="11" font-family="inherit">الانتظار ⏳</text><text x="313" y="207" fill="#ccc" text-anchor="middle" font-size="9" font-family="inherit">الداخلي</text></g>
-<g class="hroom" id="hr_exp" style="cursor:pointer;" onclick="closeHMAP();setTimeout(()=>window.open('https://wa.me/966598880223','_blank'),300)"><rect x="378" y="165" width="110" height="55" rx="8" fill="#1a4a6a" stroke="#3498db" stroke-width="1.5"/><text x="433" y="186" fill="white" text-anchor="middle" font-size="10" font-family="inherit">📋 تجربة</text><text x="433" y="200" fill="white" text-anchor="middle" font-size="10" font-family="inherit">المريض</text><text x="433" y="214" fill="#85c1e9" text-anchor="middle" font-size="9" font-family="inherit">💬 واتساب</text></g>
-<g class="hroom" id="hr_vit"><rect x="258" y="65" width="110" height="65" rx="8" fill="#6c3483" stroke="#9b59b6" stroke-width="1"/><text x="313" y="90" fill="white" text-anchor="middle" font-size="10" font-family="inherit">قياس</text><text x="313" y="105" fill="white" text-anchor="middle" font-size="10" font-family="inherit">العلامات 🩺</text></g>
-<g class="hroom" id="hr_cl1"><rect x="378" y="65" width="75" height="65" rx="8" fill="#922b21" stroke="#d63b8f" stroke-width="1"/><text x="415" y="90" fill="white" text-anchor="middle" font-size="11" font-family="inherit">عيادة 1</text><text x="415" y="112" fill="#f0a0cc" text-anchor="middle" font-size="14" font-family="inherit">🏥</text></g>
-<g class="hroom" id="hr_cl2"><rect x="462" y="65" width="75" height="65" rx="8" fill="#922b21" stroke="#d63b8f" stroke-width="1"/><text x="499" y="90" fill="white" text-anchor="middle" font-size="11" font-family="inherit">عيادة 2</text><text x="499" y="112" fill="#f0a0cc" text-anchor="middle" font-size="14" font-family="inherit">🏥</text></g>
-<g class="hroom" id="hr_exit"><rect x="548" y="165" width="85" height="55" rx="8" fill="#1e8449" stroke="#2ecc71" stroke-width="1"/><text x="590" y="188" fill="white" text-anchor="middle" font-size="11" font-family="inherit">المخرج</text><text x="590" y="208" fill="#a9dfbf" text-anchor="middle" font-size="14" font-family="inherit">🚪</text></g>
-<g class="hroom" id="hr_owait"><rect x="20" y="275" width="100" height="50" rx="8" fill="#2c3e50" stroke="#7f8c8d" stroke-width="1"/><text x="70" y="295" fill="white" text-anchor="middle" font-size="10" font-family="inherit">انتظار</text><text x="70" y="312" fill="#ccc" text-anchor="middle" font-size="10" font-family="inherit">خارجي</text></g>
-<g class="hroom" id="hr_emg"><rect x="128" y="275" width="210" height="55" rx="8" fill="#9a5a0a" stroke="#e67e22" stroke-width="1.5"/><text x="233" y="306" fill="white" text-anchor="middle" font-size="13" font-family="inherit" font-weight="bold">بوابة الطوارئ 🚨</text></g>
-<g class="hroom" id="hr_pharm" style="cursor:pointer;" onclick="closeHMAP();setTimeout(()=>showPharmacyModal(),400)"><rect x="548" y="275" width="115" height="55" rx="8" fill="#1a5a3a" stroke="#27ae60" stroke-width="1.5"/><text x="605" y="295" fill="white" text-anchor="middle" font-size="10" font-family="inherit">💊 وصفتك جاهزة</text><text x="605" y="310" fill="#a9dfbf" text-anchor="middle" font-size="9" font-family="inherit">اضغط ← صيدلية</text></g>
-<circle id="hwalker" cx="233" cy="302" r="10" fill="#E8B84B" stroke="white" stroke-width="2"/>
-<text id="hwalkericon" x="233" y="307" text-anchor="middle" font-size="12" font-family="inherit">👣</text>
-</svg>
-<div id="hprogbar" style="height:6px;background:#1a3a4a;border-radius:3px;margin:8px 0;overflow:hidden;"><div id="hprogfill" style="height:100%;background:#E8B84B;border-radius:3px;width:0%;transition:width 0.8s ease;"></div></div>
-<div id="hstepnum" style="color:#E8B84B;font-size:12px;text-align:center;margin:4px 0;font-family:inherit;">اضغط ابدأ للبدء</div>
-<div id="hinfo" style="padding:10px;background:#1a3a4a;border-radius:10px;color:white;font-size:13px;text-align:center;min-height:44px;display:flex;align-items:center;justify-content:center;font-family:inherit;">اضغط ابدأ التوجيه لبدء الرحلة معك</div>
-<button id="hstartbtn" onclick="startHMAP()" style="display:block;margin:10px auto 0;background:#E8B84B;color:#0d2233;border:none;border-radius:25px;padding:10px 28px;font-size:14px;font-weight:bold;cursor:pointer;font-family:inherit;">🎯 ابدأ التوجيه</button>
-</div>
-</div>
-<script>
-const HSTEPS=[
-{id:'hr_emg',cx:233,cy:302,lang:{ar:'اُدْخُلْ مِنْ بَوَّابَةِ الطَّوَارِئ',en:'Enter through the Emergency Gate',hi:'आपातकालीन द्वार से प्रवेश करें',ur:'ہنگامی دروازے سے داخل ہوں',fr:'Entrez par la porte des urgences',bn:'জরুরি দরজা দিয়ে প্রবেশ করুন',id:'Masuk melalui pintu darurat',ms:'Masuk melalui pintu kecemasan',tr:'Acil kapısından girin',fa:'از درگاه اورژانس وارد شوید'}},
-{id:'hr_tri',cx:202,cy:192,lang:{ar:'تَوَجَّهْ لِمُمَرِّضِ الْفَرْزْ',en:'Go to the triage nurse on your right',hi:'दाईं ओर ट्राइएज नर्स के पास जाएं',ur:'دائیں جانب ٹرائیج نرس کے پاس جائیں',fr:'Allez à l infirmière de triage à droite',bn:'ডানদিকে ট্রাইয়েজ নার্সের কাছে যান',id:'Pergi ke perawat triase di kanan',ms:'Pergi ke jururawat triaj di kanan',tr:'Sağınızdaki triaj hemşiresine gidin',fa:'به پرستار تریاژ در سمت راست بروید'}},
-{id:'hr_rec',cx:148,cy:100,lang:{ar:'اِذْهَبْ لِلاسْتِقْبَالِ أَمَامَكَ',en:'Go to the reception in front of you',hi:'सामने रिसेप्शन पर जाएं',ur:'سامنے ریسیپشن پر جائیں',fr:'Allez à l accueil devant vous',bn:'সামনের রিসেপশনে যান',id:'Pergi ke resepsi di depan Anda',ms:'Pergi ke kaunter di hadapan anda',tr:'Önünüzdeki resepsiyona gidin',fa:'به پذیرش جلوی شما بروید'}},
-{id:'hr_wait',cx:313,cy:192,lang:{ar:'اِنْتَظِرْ فِي مِنْطَقَةِ الاِنْتِظَارِ الدَّاخِلِي',en:'Wait in the internal waiting area',hi:'आंतरिक प्रतीक्षा क्षेत्र में प्रतीक्षा करें',ur:'داخلی انتظار گاہ میں انتظار کریں',fr:'Attendez dans la salle d attente interne',bn:'অভ্যন্তরীণ অপেক্ষা কক্ষে অপেক্ষা করুন',id:'Tunggu di ruang tunggu internal',ms:'Tunggu di kawasan menunggu dalaman',tr:'İç bekleme alanında bekleyin',fa:'در اتاق انتظار داخلی منتظر بمانید'}},
-{id:'hr_vit',cx:313,cy:97,lang:{ar:'اُدْخُلْ غُرْفَةَ قِيَاسِ الْعَلَامَاتِ الْحَيَوِيَّة',en:'Enter the vital signs room',hi:'वाइटल साइन्स कमरे में प्रवेश करें',ur:'حیاتی علامات کے کمرے میں جائیں',fr:'Entrez dans la salle des signes vitaux',bn:'ভাইটাল সাইনস রুমে প্রবেশ করুন',id:'Masuk ke ruang tanda vital',ms:'Masuk ke bilik tanda vital',tr:'Vital bulgular odasına girin',fa:'وارد اتاق علائم حیاتی شوید'}},
-{id:'hr_cl1',cx:415,cy:97,lang:{ar:'اُدْخُلْ الْعِيَادَةَ الْمُحَدَّدَة',en:'Enter your assigned clinic',hi:'निर्धारित क्लिनिक में प्रवेश करें',ur:'مقررہ کلینک میں جائیں',fr:'Entrez dans la clinique assignée',bn:'নির্ধারিত ক্লিনিকে প্রবেশ করুন',id:'Masuk ke klinik yang ditentukan',ms:'Masuk ke klinik yang ditetapkan',tr:'Atanan kliniğe girin',fa:'وارد کلینیک تعیین شده شوید'}},
-{id:'hr_exit',cx:590,cy:192,lang:{ar:'اتَّجِه لِلْمَخْرَج - رِحْلَتُكَ اكْتَمَلَتْ',en:'Head to the exit - journey complete',hi:'निकास की ओर जाएं - यात्रा पूर्ण',ur:'خروج کی طرف جائیں - سفر مکمل',fr:'Dirigez vous vers la sortie',bn:'বাহির দিকে যান - যাত্রা সম্পূর্ণ',id:'Menuju pintu keluar',ms:'Menuju pintu keluar',tr:'Çıkışa gidin',fa:'به سمت خروج بروید'}},
-];
-let HTIMER=null,HIDX=0;
-const HMAPLANG={
-  ar:{sec:'الأمن',wc:'🚻',tri:'ممرضة\nالفرز 👩‍⚕️',rec:'الاستقبال 🪑',wait:'الانتظار ⏳',vit:'قياس\nالعلامات 🩺',cl1:'عيادة 1\n🏥',cl2:'عيادة 2\n🏥',exit:'المخرج\n🚪',exp:'📋 تجربة\nالمريض\n💬 واتساب',pharm:'💊 وصفتك جاهزة\nاضغط ← صيدلية',emg:'بوابة الطوارئ 🚨',owait:'انتظار\nخارجي'},
-  en:{sec:'Security',wc:'🚻',tri:'Triage\nNurse 👩‍⚕️',rec:'Reception 🪑',wait:'Waiting ⏳',vit:'Vital\nSigns 🩺',cl1:'Clinic 1\n🏥',cl2:'Clinic 2\n🏥',exit:'Exit\n🚪',exp:'📋 Patient\nExperience\n💬 WhatsApp',pharm:'💊 Prescription\nTap ← Pharmacy',emg:'Emergency Gate 🚨',owait:'External\nWaiting'},
-  hi:{sec:'सुरक्षा',wc:'🚻',tri:'ट्राइएज\nनर्स 👩‍⚕️',rec:'रिसेप्शन 🪑',wait:'प्रतीक्षा ⏳',vit:'वाइटल\nसाइन्स 🩺',cl1:'क्लिनिक 1\n🏥',cl2:'क्लिनिक 2\n🏥',exit:'निकास\n🚪',exp:'📋 अनुभव\n💬 WhatsApp',pharm:'💊 नुस्खा\nफार्मेसी',emg:'आपातकालीन 🚨',owait:'बाहरी\nप्रतीक्षा'},
-  ur:{sec:'سیکیورٹی',wc:'🚻',tri:'ٹرائیج\nنرس 👩‍⚕️',rec:'ریسیپشن 🪑',wait:'انتظار ⏳',vit:'حیاتی\nعلامات 🩺',cl1:'کلینک 1\n🏥',cl2:'کلینک 2\n🏥',exit:'خروج\n🚪',exp:'📋 تجربہ\n💬 WhatsApp',pharm:'💊 نسخہ\nفارمیسی',emg:'ہنگامی دروازہ 🚨',owait:'بیرونی\nانتظار'},
-  fr:{sec:'Sécurité',wc:'🚻',tri:'Infirmière\nTriage 👩‍⚕️',rec:'Accueil 🪑',wait:'Attente ⏳',vit:'Signes\nVitaux 🩺',cl1:'Clinique 1\n🏥',cl2:'Clinique 2\n🏥',exit:'Sortie\n🚪',exp:'📋 Expérience\n💬 WhatsApp',pharm:'💊 Ordonnance\nPharmacie',emg:'Urgences 🚨',owait:'Attente\nExtérieure'},
-  bn:{sec:'নিরাপত্তা',wc:'🚻',tri:'ট্রাইয়েজ\nনার্স 👩‍⚕️',rec:'রিসেপশন 🪑',wait:'অপেক্ষা ⏳',vit:'ভাইটাল\nসাইনস 🩺',cl1:'ক্লিনিক 1\n🏥',cl2:'ক্লিনিক 2\n🏥',exit:'বাহির\n🚪',exp:'📋 অভিজ্ঞতা\n💬 WhatsApp',pharm:'💊 প্রেসক্রিপশন\nফার্মেসি',emg:'জরুরি দরজা 🚨',owait:'বাইরের\nঅপেক্ষা'},
-  id:{sec:'Keamanan',wc:'🚻',tri:'Perawat\nTriase 👩‍⚕️',rec:'Resepsi 🪑',wait:'Tunggu ⏳',vit:'Tanda\nVital 🩺',cl1:'Klinik 1\n🏥',cl2:'Klinik 2\n🏥',exit:'Keluar\n🚪',exp:'📋 Pengalaman\n💬 WhatsApp',pharm:'💊 Resep\nApotek',emg:'Pintu Darurat 🚨',owait:'Tunggu\nLuar'},
-  ms:{sec:'Keselamatan',wc:'🚻',tri:'Jururawat\nTriaj 👩‍⚕️',rec:'Kaunter 🪑',wait:'Tunggu ⏳',vit:'Tanda\nVital 🩺',cl1:'Klinik 1\n🏥',cl2:'Klinik 2\n🏥',exit:'Keluar\n🚪',exp:'📋 Pengalaman\n💬 WhatsApp',pharm:'💊 Preskripsi\nFarmasi',emg:'Pintu Kecemasan 🚨',owait:'Tunggu\nLuar'},
-  tr:{sec:'Güvenlik',wc:'🚻',tri:'Triaj\nHemşiresi 👩‍⚕️',rec:'Resepsiyon 🪑',wait:'Bekleme ⏳',vit:'Vital\nBulgular 🩺',cl1:'Klinik 1\n🏥',cl2:'Klinik 2\n🏥',exit:'Çıkış\n🚪',exp:'📋 Deneyim\n💬 WhatsApp',pharm:'💊 Reçete\nEczane',emg:'Acil Kapısı 🚨',owait:'Dış\nBekleme'},
-  fa:{sec:'امنیت',wc:'🚻',tri:'پرستار\nتریاژ 👩‍⚕️',rec:'پذیرش 🪑',wait:'انتظار ⏳',vit:'علائم\nحیاتی 🩺',cl1:'کلینیک 1\n🏥',cl2:'کلینیک 2\n🏥',exit:'خروج\n🚪',exp:'📋 تجربه\n💬 WhatsApp',pharm:'💊 نسخه\nداروخانه',emg:'درگاه اورژانس 🚨',owait:'انتظار\nبیرون'}
-};
-function updateHMAPLang(){
-  const cl=typeof CL!=='undefined'?CL:'ar';
-  const l=HMAPLANG[cl]||HMAPLANG.ar;
-  const map={hr_sec:'sec',hr_wc:'wc',hr_tri:'tri',hr_rec:'rec',hr_wait:'wait',hr_vit:'vit',hr_cl1:'cl1',hr_cl2:'cl2',hr_exit:'exit',hr_exp:'exp',hr_pharm:'pharm',hr_emg:'emg',hr_owait:'owait'};
-  Object.keys(map).forEach(id=>{
-    const el=document.getElementById(id);
-    if(!el) return;
-    const texts=el.querySelectorAll('text');
-    const lines=(l[map[id]]||'').split('\n');
-    texts.forEach((t,i)=>{if(lines[i]!==undefined) t.textContent=lines[i];});
-  });
-}
-function showPharmacyModal(){
-  const cl=typeof CL!=='undefined'?CL:'ar';
-  const titles={ar:'💊 أقرب صيدلية',en:'💊 Nearest Pharmacy',hi:'💊 निकटतम फार्मेसी',ur:'💊 قریبی فارمیسی',fr:'💊 Pharmacie proche',bn:'💊 নিকটতম ফার্মেসি',id:'💊 Apotek Terdekat',ms:'💊 Farmasi Terdekat',tr:'💊 En Yakın Eczane',fa:'💊 نزدیک‌ترین داروخانه'};
-  const title=titles[cl]||titles.ar;
-  let modal=document.getElementById('PHMODAL');
-  if(!modal){
-    modal=document.createElement('div');
-    modal.id='PHMODAL';
-    modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;display:flex;align-items:center;justify-content:center;';
-    modal.onclick=function(e){if(e.target===this)this.remove();};
-    document.body.appendChild(modal);
-  }
-  renderPharmacies();
-  const items=document.getElementById('PHLIST_ITEMS');
-  let html='<div style="background:#0d2233;border-radius:16px;padding:20px;width:92%;max-width:400px;max-height:85vh;overflow-y:auto;position:relative;">';
-  html+='<button onclick="document.getElementById(\'PHMODAL\').remove()" style="position:absolute;top:10px;left:10px;background:none;border:none;color:white;font-size:20px;cursor:pointer;">✖</button>';
-  html+='<h3 style="color:#E8B84B;text-align:center;margin:0 0 16px;font-family:inherit;">'+title+'</h3>';
-  html+='<div id="PHMODAL_ITEMS" style="display:flex;flex-direction:column;gap:8px;"></div>';
-  html+='</div>';
-  modal.innerHTML=html;
-  modal.style.display='flex';
-  document.body.style.overflow='hidden';
-  if(items){
-    document.getElementById('PHMODAL_ITEMS').innerHTML=items.innerHTML;
-  }
-}
-function showHospitalMap(){
-  document.getElementById('HMAP').style.display='flex';
-  document.body.style.overflow='hidden';
-  HIDX=0;
-  document.querySelectorAll('.hroom').forEach(r=>r.classList.remove('active','done'));
-  document.getElementById('hprogfill').style.width='0%';
-  document.getElementById('hstepnum').textContent='اضغط ابدأ للبدء';
-  document.getElementById('hinfo').textContent='اضغط ابدأ التوجيه لبدء الرحلة معك';
-  document.getElementById('hstartbtn').style.display='block';
-  document.getElementById('hstartbtn').textContent='🎯 ابدأ التوجيه';
-  const w=document.getElementById('hwalker');
-  const wi=document.getElementById('hwalkericon');
-  if(w){w.setAttribute('cx',233);w.setAttribute('cy',302);}
-  if(wi){wi.setAttribute('x',233);wi.setAttribute('y',307);}
-}
-function closeHMAP(){
-  document.getElementById('HMAP').style.display='none';
-  document.body.style.overflow='';
-  clearInterval(HTIMER);
-  if('speechSynthesis' in window) window.speechSynthesis.cancel();
-}
-function startHMAP(){
-  document.getElementById('hstartbtn').style.display='none';
-  HIDX=0;
-  clearInterval(HTIMER);
-  document.querySelectorAll('.hroom').forEach(r=>r.classList.remove('active','done'));
-  showHSTEP(0);
-  HTIMER=setInterval(()=>{
-    HIDX++;
-    if(HIDX>=HSTEPS.length){
-      clearInterval(HTIMER);
-      document.getElementById('hinfo').textContent='✅ رحلتك اكتملت! نتمنى لك الشفاء العاجل 🤲';
-      document.getElementById('hstartbtn').style.display='block';
-      document.getElementById('hstartbtn').textContent='🔄 إعادة التوجيه';
-      document.getElementById('hstepnum').textContent='اكتملت الرحلة ✅';
-      return;
-    }
-    showHSTEP(HIDX);
-  },3500);
-}
-function showHSTEP(i){
-  const s=HSTEPS[i];
-  const cl=typeof CL!=='undefined'?CL:'ar';
-  const txt=s.lang[cl]||s.lang.ar;
-  HSTEPS.forEach((_,j)=>{
-    const el=document.getElementById(HSTEPS[j].id);
-    if(el){el.classList.remove('active','done');if(j<i)el.classList.add('done');if(j===i)el.classList.add('active');}
-  });
-  const w=document.getElementById('hwalker');
-  const wi=document.getElementById('hwalkericon');
-  if(w){w.setAttribute('cx',s.cx);w.setAttribute('cy',s.cy);}
-  if(wi){wi.setAttribute('x',s.cx);wi.setAttribute('y',s.cy+5);}
-  document.getElementById('hinfo').textContent=txt;
-  document.getElementById('hstepnum').textContent=`الخطوة ${i+1} من ${HSTEPS.length}`;
-  document.getElementById('hprogfill').style.width=`${((i+1)/HSTEPS.length)*100}%`;
-  if('speechSynthesis' in window){
-    window.speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(txt);
-    const lmap={ar:'ar-SA',en:'en-US',hi:'hi-IN',ur:'ur-PK',fr:'fr-FR',bn:'bn-BD',id:'id-ID',ms:'ms-MY',tr:'tr-TR',fa:'fa-IR'};
-    u.lang=lmap[cl]||'ar-SA';
-u.rate=0.85;
-u.pitch=1;
-const voices=window.speechSynthesis.getVoices();
-const best=voices.find(v=>v.lang===u.lang&&v.localService)||voices.find(v=>v.lang.startsWith(u.lang.split('-')[0]));
-if(best) u.voice=best;
-window.speechSynthesis.speak(u);
-  }
-  if(navigator.vibrate) navigator.vibrate(100);
 }
 </script>
 </body>
