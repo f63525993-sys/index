@@ -1225,60 +1225,80 @@ function startHMAP(){
         <!-- Corridor label -->
         <text x="250" y="181" fill="#2a5070" text-anchor="middle" font-size="11" font-family="inherit" id="MAP_CORRIDOR_LABEL">— ممر المستشفى الرئيسي —</text>
 
-        <!-- === ROOM: Emergency === -->
+        <!-- === ROOM: Emergency (cx=45) === -->
         <g id="MAP_PT_emergency" class="map-point" onclick="mapShowTip('emergency',event)" style="cursor:pointer;">
-          <rect x="22" y="60" width="100" height="80" rx="10" fill="#1a0a0a" stroke="#c0392b" stroke-width="2"/>
-          <rect x="22" y="60" width="100" height="22" rx="10" fill="#7b241c"/>
-          <rect x="22" y="72" width="100" height="10" rx="0" fill="#7b241c"/>
-          <text x="72" y="77" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold" font-family="inherit" id="MAP_LBL_emergency">الطوارئ</text>
-          <text x="72" y="112" fill="#e74c3c" text-anchor="middle" font-size="24" font-family="inherit">🚨</text>
-          <!-- connector to corridor -->
-          <line x1="72" y1="140" x2="72" y2="153" stroke="#c0392b" stroke-width="2" stroke-dasharray="3,2"/>
-          <!-- pulse ring -->
-          <circle class="map-pulse" cx="72" cy="100" r="38" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.4"/>
+          <rect x="10" y="60" width="70" height="80" rx="8" fill="#1a0a0a" stroke="#c0392b" stroke-width="2"/>
+          <rect x="10" y="60" width="70" height="20" rx="8" fill="#7b241c"/>
+          <rect x="10" y="70" width="70" height="10" rx="0" fill="#7b241c"/>
+          <text x="45" y="75" fill="#fff" text-anchor="middle" font-size="9" font-weight="bold" font-family="inherit" id="MAP_LBL_emergency">الطوارئ</text>
+          <text x="45" y="110" fill="#e74c3c" text-anchor="middle" font-size="20" font-family="inherit">🚨</text>
+          <line x1="45" y1="140" x2="45" y2="153" stroke="#c0392b" stroke-width="2" stroke-dasharray="3,2"/>
+          <circle class="map-pulse" cx="45" cy="100" r="28" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.4"/>
         </g>
 
-        <!-- === ROOM: Triage === -->
+        <!-- === ROOM: Triage (cx=123) === -->
         <g id="MAP_PT_triage" class="map-point" onclick="mapShowTip('triage',event)" style="cursor:pointer;">
-          <rect x="140" y="60" width="90" height="80" rx="10" fill="#0d1a2a" stroke="#2980b9" stroke-width="2"/>
-          <rect x="140" y="60" width="90" height="22" rx="10" fill="#1a4a7a"/>
-          <rect x="140" y="72" width="90" height="10" rx="0" fill="#1a4a7a"/>
-          <text x="185" y="77" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold" font-family="inherit" id="MAP_LBL_triage">الفرز</text>
-          <text x="185" y="112" fill="#3498db" text-anchor="middle" font-size="24" font-family="inherit">🩺</text>
-          <line x1="185" y1="140" x2="185" y2="153" stroke="#2980b9" stroke-width="2" stroke-dasharray="3,2"/>
-          <circle class="map-pulse" cx="185" cy="100" r="33" fill="none" stroke="#2980b9" stroke-width="1.5" opacity="0.4"/>
+          <rect x="88" y="60" width="70" height="80" rx="8" fill="#0d1a2a" stroke="#2980b9" stroke-width="2"/>
+          <rect x="88" y="60" width="70" height="20" rx="8" fill="#1a4a7a"/>
+          <rect x="88" y="70" width="70" height="10" rx="0" fill="#1a4a7a"/>
+          <text x="123" y="75" fill="#fff" text-anchor="middle" font-size="9" font-weight="bold" font-family="inherit" id="MAP_LBL_triage">الفرز</text>
+          <text x="123" y="110" fill="#3498db" text-anchor="middle" font-size="20" font-family="inherit">🩺</text>
+          <line x1="123" y1="140" x2="123" y2="153" stroke="#2980b9" stroke-width="2" stroke-dasharray="3,2"/>
+          <circle class="map-pulse" cx="123" cy="100" r="28" fill="none" stroke="#2980b9" stroke-width="1.5" opacity="0.4"/>
         </g>
 
-        <!-- === ROOM: Waiting === -->
+        <!-- === ROOM: Reception NEW (cx=201) === -->
+        <g id="MAP_PT_reception" class="map-point" onclick="mapShowTip('reception',event)" style="cursor:pointer;">
+          <rect x="166" y="60" width="70" height="80" rx="8" fill="#0a1a1a" stroke="#0B8F7E" stroke-width="2"/>
+          <rect x="166" y="60" width="70" height="20" rx="8" fill="#064d44"/>
+          <rect x="166" y="70" width="70" height="10" rx="0" fill="#064d44"/>
+          <text x="201" y="75" fill="#fff" text-anchor="middle" font-size="9" font-weight="bold" font-family="inherit" id="MAP_LBL_reception">الاستقبال</text>
+          <text x="201" y="110" fill="#0dcfba" text-anchor="middle" font-size="20" font-family="inherit">🪪</text>
+          <line x1="201" y1="140" x2="201" y2="153" stroke="#0B8F7E" stroke-width="2" stroke-dasharray="3,2"/>
+          <circle class="map-pulse" cx="201" cy="100" r="28" fill="none" stroke="#0B8F7E" stroke-width="1.5" opacity="0.4"/>
+        </g>
+
+        <!-- === ROOM: Waiting (cx=279) === -->
         <g id="MAP_PT_waiting" class="map-point" onclick="mapShowTip('waiting',event)" style="cursor:pointer;">
-          <rect x="248" y="60" width="90" height="80" rx="10" fill="#0d1a0d" stroke="#27ae60" stroke-width="2"/>
-          <rect x="248" y="60" width="90" height="22" rx="10" fill="#1a5a3a"/>
-          <rect x="248" y="72" width="90" height="10" rx="0" fill="#1a5a3a"/>
-          <text x="293" y="77" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold" font-family="inherit" id="MAP_LBL_waiting">الانتظار</text>
-          <text x="293" y="112" fill="#2ecc71" text-anchor="middle" font-size="24" font-family="inherit">🪑</text>
-          <line x1="293" y1="140" x2="293" y2="153" stroke="#27ae60" stroke-width="2" stroke-dasharray="3,2"/>
-          <circle class="map-pulse" cx="293" cy="100" r="33" fill="none" stroke="#27ae60" stroke-width="1.5" opacity="0.4"/>
+          <rect x="244" y="60" width="70" height="80" rx="8" fill="#0d1a0d" stroke="#27ae60" stroke-width="2"/>
+          <rect x="244" y="60" width="70" height="20" rx="8" fill="#1a5a3a"/>
+          <rect x="244" y="70" width="70" height="10" rx="0" fill="#1a5a3a"/>
+          <text x="279" y="75" fill="#fff" text-anchor="middle" font-size="9" font-weight="bold" font-family="inherit" id="MAP_LBL_waiting">الانتظار</text>
+          <text x="279" y="110" fill="#2ecc71" text-anchor="middle" font-size="20" font-family="inherit">🪑</text>
+          <line x1="279" y1="140" x2="279" y2="153" stroke="#27ae60" stroke-width="2" stroke-dasharray="3,2"/>
+          <circle class="map-pulse" cx="279" cy="100" r="28" fill="none" stroke="#27ae60" stroke-width="1.5" opacity="0.4"/>
         </g>
 
-        <!-- === ROOM: Clinic === -->
+        <!-- === ROOM: Vitals NEW (cx=357) === -->
+        <g id="MAP_PT_vitals" class="map-point" onclick="mapShowTip('vitals',event)" style="cursor:pointer;">
+          <rect x="322" y="60" width="70" height="80" rx="8" fill="#0d1220" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,2"/>
+          <rect x="322" y="60" width="70" height="20" rx="8" fill="#5b2c6f"/>
+          <rect x="322" y="70" width="70" height="10" rx="0" fill="#5b2c6f"/>
+          <text x="357" y="75" fill="#fff" text-anchor="middle" font-size="8" font-weight="bold" font-family="inherit" id="MAP_LBL_vitals">العلامات الحيوية</text>
+          <text x="357" y="110" fill="#d98fe8" text-anchor="middle" font-size="20" font-family="inherit">📋</text>
+          <line x1="357" y1="140" x2="357" y2="153" stroke="#8e44ad" stroke-width="2" stroke-dasharray="3,2"/>
+          <circle class="map-pulse" cx="357" cy="100" r="28" fill="none" stroke="#8e44ad" stroke-width="1.5" opacity="0.4"/>
+        </g>
+
+        <!-- === ROOM: Clinic (cx=445) === -->
         <g id="MAP_PT_clinic" class="map-point" onclick="mapShowTip('clinic',event)" style="cursor:pointer;">
-          <rect x="356" y="60" width="90" height="80" rx="10" fill="#1a1200" stroke="#d4ac0d" stroke-width="2"/>
-          <rect x="356" y="60" width="90" height="22" rx="10" fill="#6d5a0a"/>
-          <rect x="356" y="72" width="90" height="10" rx="0" fill="#6d5a0a"/>
-          <text x="401" y="77" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold" font-family="inherit" id="MAP_LBL_clinic">العيادة</text>
-          <text x="401" y="112" fill="#f1c40f" text-anchor="middle" font-size="24" font-family="inherit">👨‍⚕️</text>
-          <line x1="401" y1="140" x2="401" y2="153" stroke="#d4ac0d" stroke-width="2" stroke-dasharray="3,2"/>
-          <circle class="map-pulse" cx="401" cy="100" r="33" fill="none" stroke="#d4ac0d" stroke-width="1.5" opacity="0.4"/>
+          <rect x="400" y="60" width="90" height="80" rx="8" fill="#1a1200" stroke="#d4ac0d" stroke-width="2"/>
+          <rect x="400" y="60" width="90" height="20" rx="8" fill="#6d5a0a"/>
+          <rect x="400" y="70" width="90" height="10" rx="0" fill="#6d5a0a"/>
+          <text x="445" y="75" fill="#fff" text-anchor="middle" font-size="9" font-weight="bold" font-family="inherit" id="MAP_LBL_clinic">العيادة</text>
+          <text x="445" y="110" fill="#f1c40f" text-anchor="middle" font-size="20" font-family="inherit">👨‍⚕️</text>
+          <line x1="445" y1="140" x2="445" y2="153" stroke="#d4ac0d" stroke-width="2" stroke-dasharray="3,2"/>
+          <circle class="map-pulse" cx="445" cy="100" r="33" fill="none" stroke="#d4ac0d" stroke-width="1.5" opacity="0.4"/>
         </g>
 
-        <!-- === ROOM: Exit === -->
+        <!-- === ROOM: Exit (cx=45, bottom) === -->
         <g id="MAP_PT_exit" class="map-point" onclick="mapShowTip('exit',event)" style="cursor:pointer;">
-          <rect x="22" y="220" width="100" height="80" rx="10" fill="#0d0a1a" stroke="#8e44ad" stroke-width="2"/>
-          <rect x="22" y="220" width="100" height="22" rx="10" fill="#5b2c6f"/>
-          <rect x="22" y="232" width="100" height="10" rx="0" fill="#5b2c6f"/>
-          <text x="72" y="237" fill="#fff" text-anchor="middle" font-size="11" font-weight="bold" font-family="inherit" id="MAP_LBL_exit">الخروج</text>
-          <text x="72" y="276" fill="#9b59b6" text-anchor="middle" font-size="24" font-family="inherit">🚪</text>
-          <line x1="72" y1="200" x2="72" y2="220" stroke="#8e44ad" stroke-width="2" stroke-dasharray="3,2"/>
+          <rect x="10" y="220" width="70" height="80" rx="8" fill="#0d0a1a" stroke="#8e44ad" stroke-width="2"/>
+          <rect x="10" y="220" width="70" height="20" rx="8" fill="#5b2c6f"/>
+          <rect x="10" y="230" width="70" height="10" rx="0" fill="#5b2c6f"/>
+          <text x="45" y="235" fill="#fff" text-anchor="middle" font-size="9" font-weight="bold" font-family="inherit" id="MAP_LBL_exit">الخروج</text>
+          <text x="45" y="272" fill="#9b59b6" text-anchor="middle" font-size="20" font-family="inherit">🚪</text>
+          <line x1="45" y1="200" x2="45" y2="220" stroke="#8e44ad" stroke-width="2" stroke-dasharray="3,2"/>
         </g>
 
         <!-- Animated patient path (drawn by JS) -->
@@ -1287,23 +1307,25 @@ function startHMAP(){
               stroke-linejoin="round" opacity="0.85"/>
 
         <!-- Animated walker dot -->
-        <circle id="MAP_WALKER" cx="72" cy="175" r="8" fill="#E8B84B" opacity="0">
+        <circle id="MAP_WALKER" cx="45" cy="175" r="8" fill="#E8B84B" opacity="0">
           <animate attributeName="r" values="8;11;8" dur="1s" repeatCount="indefinite"/>
         </circle>
-        <text id="MAP_WALKER_ICON" x="62" y="181" font-size="14" opacity="0">🚶</text>
+        <text id="MAP_WALKER_ICON" x="35" y="181" font-size="14" opacity="0">🚶</text>
 
         <!-- Direction arrows along path (static, appear after path draw) -->
         <g id="MAP_ARROWS" opacity="0">
-          <text x="128" y="174" fill="#E8B84B" font-size="14" text-anchor="middle">→</text>
-          <text x="237" y="174" fill="#E8B84B" font-size="14" text-anchor="middle">→</text>
-          <text x="348" y="174" fill="#E8B84B" font-size="14" text-anchor="middle">→</text>
-          <text x="465" y="174" fill="#E8B84B" font-size="14" text-anchor="middle">↓</text>
+          <text x="84"  y="174" fill="#E8B84B" font-size="12" text-anchor="middle">→</text>
+          <text x="162" y="174" fill="#E8B84B" font-size="12" text-anchor="middle">→</text>
+          <text x="240" y="174" fill="#E8B84B" font-size="12" text-anchor="middle">→</text>
+          <text x="318" y="174" fill="#E8B84B" font-size="12" text-anchor="middle">→</text>
+          <text x="401" y="174" fill="#E8B84B" font-size="12" text-anchor="middle">→</text>
+          <text x="470" y="214" fill="#E8B84B" font-size="12" text-anchor="middle">↓</text>
         </g>
 
         <!-- You are here label (entrance) -->
         <g id="MAP_YOU_HERE">
-          <rect x="38" y="42" width="68" height="16" rx="4" fill="#E8B84B"/>
-          <text x="72" y="54" fill="#000" text-anchor="middle" font-size="10" font-weight="bold" font-family="inherit" id="MAP_LBL_youhere">أنت هنا ⬇</text>
+          <rect x="11" y="42" width="68" height="16" rx="4" fill="#E8B84B"/>
+          <text x="45" y="54" fill="#000" text-anchor="middle" font-size="10" font-weight="bold" font-family="inherit" id="MAP_LBL_youhere">أنت هنا ⬇</text>
         </g>
 
       </svg>
@@ -1319,17 +1341,25 @@ function startHMAP(){
         <div class="map-leg-dot" style="background:#2980b9;"></div>
         <div><div class="map-leg-name" id="MAP_LEG_triage">الفرز</div><div class="map-leg-step" id="MAP_STEP_triage">خطوة 2</div></div>
       </div>
+      <div class="map-leg-item" onclick="mapShowTip('reception',null,this)" data-pt="reception">
+        <div class="map-leg-dot" style="background:#0B8F7E;"></div>
+        <div><div class="map-leg-name" id="MAP_LEG_reception">الاستقبال</div><div class="map-leg-step" id="MAP_STEP_reception">خطوة 3</div></div>
+      </div>
       <div class="map-leg-item" onclick="mapShowTip('waiting',null,this)" data-pt="waiting">
         <div class="map-leg-dot" style="background:#27ae60;"></div>
-        <div><div class="map-leg-name" id="MAP_LEG_waiting">الانتظار</div><div class="map-leg-step" id="MAP_STEP_waiting">خطوة 3</div></div>
+        <div><div class="map-leg-name" id="MAP_LEG_waiting">الانتظار</div><div class="map-leg-step" id="MAP_STEP_waiting">خطوة 4</div></div>
+      </div>
+      <div class="map-leg-item" onclick="mapShowTip('vitals',null,this)" data-pt="vitals">
+        <div class="map-leg-dot" style="background:#8e44ad;"></div>
+        <div><div class="map-leg-name" id="MAP_LEG_vitals">العلامات الحيوية</div><div class="map-leg-step" id="MAP_STEP_vitals">خطوة 5</div></div>
       </div>
       <div class="map-leg-item" onclick="mapShowTip('clinic',null,this)" data-pt="clinic">
         <div class="map-leg-dot" style="background:#d4ac0d;"></div>
-        <div><div class="map-leg-name" id="MAP_LEG_clinic">العيادة</div><div class="map-leg-step" id="MAP_STEP_clinic">خطوة 4</div></div>
+        <div><div class="map-leg-name" id="MAP_LEG_clinic">العيادة</div><div class="map-leg-step" id="MAP_STEP_clinic">خطوة 6</div></div>
       </div>
       <div class="map-leg-item" onclick="mapShowTip('exit',null,this)" data-pt="exit" style="grid-column:1/-1;">
         <div class="map-leg-dot" style="background:#8e44ad;"></div>
-        <div><div class="map-leg-name" id="MAP_LEG_exit">الخروج</div><div class="map-leg-step" id="MAP_STEP_exit">خطوة 5</div></div>
+        <div><div class="map-leg-name" id="MAP_LEG_exit">الخروج</div><div class="map-leg-step" id="MAP_STEP_exit">خطوة 7</div></div>
       </div>
     </div>
 
@@ -1370,7 +1400,9 @@ const MAP_LANG = {
     pts:{
       emergency:{name:'🚨 الطوارئ',     desc:'مدخل الطوارئ الرئيسي مفتوح 24 ساعة — توجّه مباشرةً عند الوصول'},
       triage:   {name:'🩺 الفرز',        desc:'ممرض الفرز سيقيّم حالتك ويحدد الأولوية — أخبره بالأعراض'},
+      reception:{name:'🪪 الاستقبال',    desc:'تسجيل بيانات المريض واستكمال الإجراءات الأولية — جهّز هويتك أو تأشيرتك'},
       waiting:  {name:'🪑 الانتظار',     desc:'اجلس في منطقة الانتظار وانتبه لنداء اسمك على الشاشة'},
+      vitals:   {name:'📋 العلامات الحيوية', desc:'قياس الضغط والنبض والحرارة وتقييم الحالة الأساسية قبل الدخول للطبيب'},
       clinic:   {name:'👨‍⚕️ العيادة',      desc:'ادخل على الطبيب في العيادة المحددة وجهّز ملفاتك الطبية'},
       exit:     {name:'🚪 الخروج',       desc:'بعد انتهاء الفحص — استلم الوصفة وتوجّه للصيدلية أو الخروج'}
     }
@@ -1385,7 +1417,9 @@ const MAP_LANG = {
     pts:{
       emergency:{name:'🚨 Emergency',   desc:'Main emergency entrance — open 24/7, go here immediately on arrival'},
       triage:   {name:'🩺 Triage',      desc:'The triage nurse will assess your condition and assign priority'},
+      reception:{name:'🪪 Reception',   desc:'Register your personal data and complete initial procedures — have your ID ready'},
       waiting:  {name:'🪑 Waiting',     desc:'Sit in the waiting area and watch the screen for your number'},
+      vitals:   {name:'📋 Vital Signs', desc:'Measurement of blood pressure, pulse, temperature and baseline health assessment'},
       clinic:   {name:'👨‍⚕️ Clinic',      desc:'Enter the assigned clinic when called and have your documents ready'},
       exit:     {name:'🚪 Exit',        desc:'After examination — collect your prescription and head to pharmacy or exit'}
     }
@@ -1400,7 +1434,9 @@ const MAP_LANG = {
     pts:{
       emergency:{name:'🚨 आपातकाल',    desc:'मुख्य आपातकालीन प्रवेश द्वार — 24/7 खुला रहता है'},
       triage:   {name:'🩺 ट्राइएज',     desc:'नर्स आपकी स्थिति का आकलन करेगी और प्राथमिकता निर्धारित करेगी'},
+      reception:{name:'🪪 रिसेप्शन',    desc:'रोगी डेटा दर्ज करें और प्रारंभिक प्रक्रियाएं पूरी करें — ID तैयार रखें'},
       waiting:  {name:'🪑 प्रतीक्षा',    desc:'प्रतीक्षा क्षेत्र में बैठें और स्क्रीन पर अपना नंबर देखें'},
+      vitals:   {name:'📋 वाइटल साइन्स', desc:'रक्तचाप, नाड़ी, तापमान और बुनियादी स्वास्थ्य मूल्यांकन'},
       clinic:   {name:'👨‍⚕️ क्लिनिक',     desc:'बुलाए जाने पर निर्धारित क्लिनिक में प्रवेश करें'},
       exit:     {name:'🚪 निकास',       desc:'जांच के बाद — पर्चा लें और फार्मेसी जाएं या बाहर निकलें'}
     }
@@ -1415,7 +1451,9 @@ const MAP_LANG = {
     pts:{
       emergency:{name:'🚨 ہنگامی',      desc:'مرکزی ہنگامی داخلہ — 24 گھنٹے کھلا رہتا ہے'},
       triage:   {name:'🩺 ٹرائیج',      desc:'نرس آپ کی حالت کا جائزہ لے کر ترجیح طے کرے گی'},
+      reception:{name:'🪪 ریسیپشن',     desc:'مریض کا ڈیٹا درج کریں اور ابتدائی طریقہ کار مکمل کریں — شناختی کارڈ تیار رکھیں'},
       waiting:  {name:'🪑 انتظار',      desc:'انتظار گاہ میں بیٹھیں اور اسکرین پر اپنا نمبر دیکھیں'},
+      vitals:   {name:'📋 حیاتی علامات', desc:'بلڈ پریشر، نبض، درجہ حرارت اور بنیادی صحت کا جائزہ'},
       clinic:   {name:'👨‍⚕️ کلینک',       desc:'بلائے جانے پر مخصوص کلینک میں داخل ہوں'},
       exit:     {name:'🚪 خروج',        desc:'معائنے کے بعد — نسخہ لیں اور فارمیسی یا باہر جائیں'}
     }
@@ -1428,7 +1466,9 @@ const MAP_LANG = {
     pts:{
       emergency:{name:'🚨 Urgences',    desc:'Entrée principale des urgences — ouverte 24h/24'},
       triage:   {name:'🩺 Triage',      desc:"L'infirmier évaluera votre état et établira la priorité"},
+      reception:{name:'🪪 Accueil',     desc:"Enregistrez vos données et complétez les formalités — ayez votre pièce d'identité"},
       waiting:  {name:'🪑 Attente',     desc:'Asseyez-vous et surveillez l\'écran pour votre numéro'},
+      vitals:   {name:'📋 Signes Vitaux', desc:'Mesure de la pression artérielle, du pouls, de la température et évaluation de base'},
       clinic:   {name:'👨‍⚕️ Clinique',    desc:'Entrez dans la clinique assignée lorsque vous êtes appelé'},
       exit:     {name:'🚪 Sortie',      desc:'Après l\'examen — récupérez votre ordonnance et dirigez-vous vers la sortie'}
     }
@@ -1443,7 +1483,9 @@ const MAP_LANG = {
     pts:{
       emergency:{name:'🚨 اورژانس',   desc:'ورودی اصلی اورژانس — ۲۴ ساعته باز است'},
       triage:   {name:'🩺 تریاژ',     desc:'پرستار تریاژ وضعیت شما را ارزیابی می‌کند'},
+      reception:{name:'🪪 پذیرش',     desc:'ثبت اطلاعات بیمار و تکمیل مراحل اولیه — مدرک شناسایی آماده داشته باشید'},
       waiting:  {name:'🪑 انتظار',    desc:'در محل انتظار بنشینید و منتظر شماره‌تان باشید'},
+      vitals:   {name:'📋 علائم حیاتی', desc:'اندازه‌گیری فشار خون، نبض، دما و ارزیابی پایه سلامت'},
       clinic:   {name:'👨‍⚕️ کلینیک',   desc:'وقتی صدا زده شدید وارد کلینیک تعیین‌شده شوید'},
       exit:     {name:'🚪 خروج',      desc:'پس از معاینه — نسخه را بگیرید و بروید'}
     }
@@ -1476,7 +1518,7 @@ function mapUpdateTexts(){
   if(corrEl) corrEl.textContent = L.corridor || '— ممر المستشفى الرئيسي —';
   // Step labels in legend
   var stepWord = L.step || 'خطوة';
-  var pts = ['emergency','triage','waiting','clinic','exit'];
+  var pts = ['emergency','triage','reception','waiting','vitals','clinic','exit'];
   pts.forEach(function(p,i){
     var svgLbl = el('MAP_LBL_'+p);
     var legLbl = el('MAP_LEG_'+p);
@@ -1489,14 +1531,16 @@ function mapUpdateTexts(){
 
 /* ── Animated path ── */
 var MAP_PATH_COORDS = [
-  {x:72,  y:175},  // Emergency
-  {x:185, y:175},  // Triage
-  {x:293, y:175},  // Waiting
-  {x:401, y:175},  // Clinic
+  {x:45,  y:175},  // Emergency
+  {x:123, y:175},  // Triage
+  {x:201, y:175},  // Reception
+  {x:279, y:175},  // Waiting
+  {x:357, y:175},  // Vitals
+  {x:445, y:175},  // Clinic
   {x:470, y:175},  // corridor end
   {x:470, y:240},  // turn down
-  {x:72,  y:240},  // back
-  {x:72,  y:220}   // Exit
+  {x:45,  y:240},  // back
+  {x:45,  y:220}   // Exit
 ];
 
 var mapAnimTimer = null;
