@@ -821,6 +821,24 @@ function openPharmacy(){
   }
 }
 
+function openHelpWA(){
+  var cl = typeof CL !== 'undefined' ? CL : 'ar';
+  var msgs = {
+    ar: 'مرحباً 👋\nمعك فريق تجربة المريض\nيسعدنا خدمتك\nاكتب ما تحتاجه وسنساعدك مباشرة',
+    en: 'Hello 👋\nYou are connected with the Patient Experience Team\nWe are happy to serve you\nPlease write what you need and we will help you directly',
+    hi: 'नमस्ते 👋\nआप मरीज़ अनुभव टीम से जुड़े हैं\nहम आपकी सेवा करके प्रसन्न हैं\nकृपया लिखें कि आपको क्या चाहिए और हम सीधे मदद करेंगे',
+    ur: 'السلام علیکم 👋\nآپ مریض تجربہ ٹیم سے جڑے ہیں\nہمیں آپ کی خدمت کرکے خوشی ہوگی\nلکھیں کہ آپ کو کیا چاہیے اور ہم فوری مدد کریں گے',
+    fr: "Bonjour 👋\nVous êtes en contact avec l'équipe Expérience Patient\nNous sommes heureux de vous servir\nÉcrivez ce dont vous avez besoin et nous vous aiderons directement",
+    bn: 'হ্যালো 👋\nআপনি রোগী অভিজ্ঞতা দলের সাথে সংযুক্ত\nআপনাকে সেবা দিতে পেরে আমরা আনন্দিত\nআপনার প্রয়োজন লিখুন এবং আমরা সরাসরি সাহায্য করব',
+    id: 'Halo 👋\nAnda terhubung dengan Tim Pengalaman Pasien\nKami senang melayani Anda\nTulis apa yang Anda butuhkan dan kami akan membantu langsung',
+    ms: 'Helo 👋\nAnda berhubung dengan Pasukan Pengalaman Pesakit\nKami gembira melayani anda\nTulis apa yang anda perlukan dan kami akan membantu terus',
+    tr: 'Merhaba 👋\nHasta Deneyimi Ekibiyle bağlantıdasınız\nSize hizmet etmekten mutluluk duyarız\nNeye ihtiyacınız olduğunu yazın, doğrudan yardımcı olalım',
+    fa: 'سلام 👋\nشما با تیم تجربه بیمار در ارتباط هستید\nخوشحال می\u200cشویم که خدمت کنیم\nبنویسید چه نیازی دارید و ما مستقیماً کمک می\u200cکنیم'
+  };
+  var msg = msgs[cl] || msgs['ar'];
+  window.open('https://wa.me/966598880223?text=' + encodeURIComponent(msg), '_blank');
+}
+
 // Keyboard nav
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown') nextStep();
@@ -863,7 +881,7 @@ document.addEventListener('keydown',e=>{
 <button id="hstartbtn" onclick="startHMAP()" style="display:block;margin:8px auto;background:#27ae60;color:white;border:none;border-radius:25px;padding:12px 32px;font-size:15px;font-weight:bold;cursor:pointer;font-family:inherit;width:80%;">🎯 ابدأ التوجيه</button>
 </div>
 <div style="display:flex;gap:8px;padding:10px 12px;border-top:1px solid rgba(232,184,75,0.2);flex-shrink:0;background:#0d2233;border-radius:0 0 16px 16px;">
-<button style="flex:1;padding:10px;background:#1a4a6a;color:white;border:none;border-radius:12px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit;" onclick="window.open('https://wa.me/966598880223','_blank')" id="hexpbtn">🤝 أنا هنا لمساعدتك 💬</button>
+<button style="flex:1;padding:10px;background:#1a4a6a;color:white;border:none;border-radius:12px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit;" onclick="openHelpWA()" id="hexpbtn">🤝 أنا هنا لمساعدتك 💬</button>
 <button style="flex:1;padding:10px;background:#1a5a3a;color:white;border:none;border-radius:12px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit;" onclick="showPharmacyModal()" id="hpharmbtn">💊 أقرب صيدلية</button>
 </div>
 </div>
@@ -1317,7 +1335,7 @@ function startHMAP(){
 
     <!-- Action buttons -->
     <div id="MAP_ACTION_BTNS" style="flex-wrap:wrap;">
-      <button id="MAP_BTN_HELP" onclick="window.open('https://wa.me/966598880223','_blank')" style="background:linear-gradient(135deg,#1a4a6a,#0d2d47);border:1px solid rgba(255,255,255,.15)!important;color:#fff;flex:1;min-width:140px;"><span id="MAP_BTN_HELP_TXT">🤝 أنا هنا لمساعدتك 💬</span></button>
+      <button id="MAP_BTN_HELP" onclick="openHelpWA()" style="background:linear-gradient(135deg,#1a4a6a,#0d2d47);border:1px solid rgba(255,255,255,.15)!important;color:#fff;flex:1;min-width:140px;"><span id="MAP_BTN_HELP_TXT">🤝 أنا هنا لمساعدتك 💬</span></button>
       <button id="MAP_BTN_PHARM" onclick="showPharmacyModal()" style="background:linear-gradient(135deg,#1a5a3a,#0d3a22);border:1px solid rgba(255,255,255,.15)!important;color:#fff;flex:1;min-width:140px;"><span id="MAP_BTN_PHARM_TXT">💊 أقرب صيدلية</span></button>
       <button id="MAP_BTN_RESTART" onclick="mapRestartAnim()" style="flex:1;min-width:100px;">🔄 <span id="MAP_BTN_RESTART_TXT">إعادة المسار</span></button>
       <button id="MAP_BTN_CLOSE2"  onclick="mapModalClose()" style="flex:1;min-width:80px;">✕ <span id="MAP_BTN_CLOSE_TXT">إغلاق</span></button>
